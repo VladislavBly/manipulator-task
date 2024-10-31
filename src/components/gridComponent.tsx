@@ -45,6 +45,7 @@ export default function GridComponent() {
     const drawGrid = () => {
         const cells = Array.from({ length: rows * columns }, (_, i) => i + 1);
         setGrid(cells.map((cell) => (
+            // @ts-expect-error: The type
             <Grid item xs={12 / columns} key={cell}>
                 <Paper sx={{
                     position: 'relative',
@@ -52,7 +53,8 @@ export default function GridComponent() {
                     textAlign: 'center',
                     border: 1,
                     color: '#f0f0f0',
-                    height: 60
+                    height: 60,
+                    width: 60,
                 }}>
                 <Typography>{cell}</Typography>
                 {items.includes(cell) ? (

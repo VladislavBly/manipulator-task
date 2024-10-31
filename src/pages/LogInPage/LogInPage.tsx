@@ -2,13 +2,19 @@ import { Box, Typography, TextField,Button } from "@mui/material"
 import style from './style.module.css'
 import { useForm, Controller } from 'react-hook-form'
 import { useNavigate } from "react-router-dom";
+
+type LoginFormValues = {
+    login: string;
+    password: string;
+};
+
 function LogInPage() {  
     const navigate = useNavigate();
-    const { handleSubmit, control, setError ,formState: { errors } } = useForm();
+    const { handleSubmit, control, setError ,formState: { errors } } = useForm<LoginFormValues>();
     const commonStyle = { width: '250px' }; // Пример фиксированной ширины
 
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: LoginFormValues) => {
         const { login, password } = data;
         if( login === 'admin' && password === 'admin') {
             navigate('/cabinet')
@@ -45,7 +51,7 @@ function LogInPage() {
                     label='Логин' 
                     variant='standard' 
                     error={!!errors.login}
-                    helperText={errors.login?.message}
+                    helperText={errors.login?.message as string}
                     
                 />
             )}
@@ -63,7 +69,7 @@ function LogInPage() {
                     label='Пароль'  
                     variant='standard' 
                     error={!!errors.password}
-                    helperText={errors.password?.message}
+                    helperText={errors.login?.message as string}
                 />
             )}
         />

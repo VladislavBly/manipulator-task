@@ -108,7 +108,7 @@ const activeGridSlice = createSlice({
       })
       
     },
-    setSpeed: (state, action:PayloadAction<{speed:numbe}>) => {
+    setSpeed: (state, action:PayloadAction<{speed:number}>) => {
       const {speed} = action.payload
       state.speed = speed
     }

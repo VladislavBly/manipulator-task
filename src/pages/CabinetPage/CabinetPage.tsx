@@ -11,7 +11,8 @@ import { useEffect, useState } from "react";
 import {Snackbar, Alert} from "@mui/material";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import optimizationCommand from "../../helpers/optimizationCommand";
-import Grid from '@mui/material/Grid2';
+import { SnackbarCloseReason } from '@mui/material/Snackbar';
+
 
 function CabinetPage() {  
     const commonStyle = { width:'90%', mb:2}; // Пример фиксированной ширины
@@ -88,7 +89,9 @@ function CabinetPage() {
     useEffect(() => {
         if(finish){
             const optimizationeddCommand = optimizationCommand(prevCommand);
-            dispatch(setHistory({ command: prevCommand, items: items.join(','), prevItems: prevItem.join(','), optimizationedCommand: optimizationeddCommand}))  
+            if(prevItem){
+                dispatch(setHistory({ command: prevCommand, items: items.join(','), prevItems: prevItem.join(','), optimizationedCommand: optimizationeddCommand}))  
+            }
         }
 
         console.log(history)
@@ -99,8 +102,8 @@ function CabinetPage() {
         dispatch(setPickIndex({pickIndex:pickIndexx}))
     },[pickState])
 
-
-    const handleClose = (event, reason) => {
+    // @ts-expect-error: The type of 'event' is not compatible with the expected type in Snackbar.
+    const handleClose = (event: React.SyntheticEvent | MouseEvent, reason: SnackbarCloseReason) => {
         if (reason === 'clickaway') {
             return;
         }
@@ -224,6 +227,7 @@ function CabinetPage() {
         <Snackbar 
                 open={open} 
                 autoHideDuration={5000} 
+               // @ts-expect-error: The type of 'event' is not compatible with the expected type in Snackbar.
                 onClose={handleClose} 
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             >
