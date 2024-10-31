@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import hook from '../assets/magnet.svg';
@@ -7,7 +7,7 @@ import style from './style.module.css';
 import { motion } from 'framer-motion';
 import { setItem} from "../store/ItemSlice";
 import { RootState } from "../store/store";
-
+import Grid from '@mui/material/Grid2';
 
 function getRandomInt(min:number, max:number):number {
     const minCeiled = Math.ceil(min);

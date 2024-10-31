@@ -1,7 +1,7 @@
 
-export default function optimizationCommand(command: string) {
+export default function optimizationCommand(command: string):string {
     let count = 1;
-    let optimizationedCommand = '';
+    let optimizationedCommand:string = '';
     for (let i = 0; i < command.length; i++) {
         if(command[i] === command[i+1]){
             count++

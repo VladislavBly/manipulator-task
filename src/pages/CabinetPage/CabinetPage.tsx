@@ -1,18 +1,17 @@
-import { Container, Box, Typography, TextField, Button,Grid, Paper } from "@mui/material"
+import { Container, Box, Typography, TextField, Button, Paper } from "@mui/material"
 import DisplaySettingsOutlinedIcon from '@mui/icons-material/DisplaySettingsOutlined';
 import SettingsEthernetOutlinedIcon from '@mui/icons-material/SettingsEthernetOutlined';
 import HistoryIcon from '@mui/icons-material/History';
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
-import { setRows, setColumns } from "../../store/gridSlice";
 import {setActive, setCommand, setPickIndex, setHistory, setSpeed} from "../../store/activeGridSlice";
-import { setItem, setItemIndex } from "../../store/ItemSlice";
+import { setItemIndex } from "../../store/ItemSlice";
 import GridComponent from "../../components/gridComponent";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {Snackbar, Alert} from "@mui/material";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import optimizationCommand from "../../helpers/optimizationCommand";
-import { s, use } from "framer-motion/client";
+import Grid from '@mui/material/Grid2';
 
 function CabinetPage() {  
     const commonStyle = { width:'90%', mb:2}; // Пример фиксированной ширины
